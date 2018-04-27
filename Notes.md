@@ -18,13 +18,18 @@ Business
 	Rating?
 Products
 	Tags (has many)
-	Tag_Id
 	Business_id
 Category
 	Business (has many)
 Tag
 	Products (has many)
 	Business (has many through Products)
+ProductsTags
+	Tag_Id
+	Products_Id
+BusinessProduct
+	Products_Id
+	Business_Id
 
 Description
   A directory of small retailers that allows the public to view small business by location, category, product, or tag. People can also sign up to claim a business, add a business, or add tags.
@@ -37,6 +42,9 @@ Description
   Scope Methods
   	Recently Added Shops
   	Nearby Shops (Find by location)
+
+	Images
+		Paperclip gem
 
 Name Ideas
 	•	Across the Street
