@@ -18,9 +18,10 @@ require 'faker'
 end
 
 10.times do
+
   Business.create(
     name: Faker::Company.name,
-    full_street_address: Faker::Address.street_address.city.state_abbr.zip,
+    full_street_address: Faker::Address,
     website: Faker::Internet.url,
     phone: Faker::PhoneNumber.phone_number,
     image: Faker::Placeholdit.image
