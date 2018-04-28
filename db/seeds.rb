@@ -12,23 +12,24 @@ require 'faker'
     name: Faker::Name.name,
     email: Faker::Internet.unique.email,
     password: "password",
-    password_confirmation: "password"
+    password_confirmation: "password",
     image: Faker::Placeholdit.image
   )
+end
 
 10.times do
   Business.create(
     name: Faker::Company.name,
     full_street_address: Faker::Address.street_address.city.state_abbr.zip,
     website: Faker::Internet.url,
-    phone: Faker::PhoneNumber.phone_number
+    phone: Faker::PhoneNumber.phone_number,
     image: Faker::Placeholdit.image
   )
 end
 
 10.times do
   Product.create(
-    name: Faker::Commerce.product_name
+    name: Faker::Commerce.product_name,
     image: Faker::Placeholdit.image
   )
 end
@@ -37,11 +38,13 @@ end
   Tag.create(
     name: Faker::Hipster.word
   )
+end
 
 10.times do
   Category.create(
     name: Faker::Commerce.department
   )
+end
 
 counter = 1
 Product.all.each do |product|
@@ -69,6 +72,7 @@ Product.all.each do |product|
   product.save
   counter += 1
 end
+
 Product.all.each do |product|
   product.tag_id = counter
   product.save
