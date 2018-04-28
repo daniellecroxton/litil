@@ -13,6 +13,7 @@ require 'faker'
     email: Faker::Internet.unique.email,
     password: "password",
     password_confirmation: "password"
+    image: Faker::Placeholdit.image
   )
 
 10.times do
@@ -21,30 +22,55 @@ require 'faker'
     full_street_address: Faker::Address.street_address.city.state_abbr.zip,
     website: Faker::Internet.url,
     phone: Faker::PhoneNumber.phone_number
+    image: Faker::Placeholdit.image
   )
 end
 
-# 10.times do
-#   Item.create(
-#     title: Faker::Commerce.product_name,
-#     inventory: Faker::Number.number(2),
-#     price: Faker::Number.decimal(2)
-#   )
-#   Category.create(title: Faker::Commerce.department)
-# end
-#
-# counter = 1
-# Item.all.each do |item|
-#   item.category_id = counter
-#   item.save
-#   counter += 1
-# end
-#
-# 5.times do
-#   User.create(
-#     name: Faker::Name.name,
-#     email: Faker::Internet.email,
-#     password: "password",
-#     password_confirmation: "password"
-#   )
-# end
+10.times do
+  Product.create(
+    name: Faker::Commerce.product_name
+    image: Faker::Placeholdit.image
+  )
+end
+
+30.times do
+  Tag.create(
+    name: Faker::Hipster.word
+  )
+
+10.times do
+  Category.create(
+    name: Faker::Commerce.department
+  )
+
+counter = 1
+Product.all.each do |product|
+  product.business_id = counter
+  product.save
+  counter += 1
+end
+
+counter = 1
+Business.all.each do |business|
+  business.category_id = counter
+  business.save
+  counter += 1
+end
+
+counter = 1
+Product.all.each do |product|
+  product.tag_id = counter
+  product.save
+  counter += 1
+end
+
+Product.all.each do |product|
+  product.tag_id = counter
+  product.save
+  counter += 1
+end
+Product.all.each do |product|
+  product.tag_id = counter
+  product.save
+  counter += 1
+end
