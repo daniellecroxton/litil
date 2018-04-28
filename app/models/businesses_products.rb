@@ -1,5 +1,5 @@
 class BusinessesProducts < ApplicationRecord
-  belongs_to :businesses
-  belongs_to :products
+  belongs_to :business
+  belongs_to :product
 
 end

@@ -1,5 +1,5 @@
 class ProductsTags < ApplicationRecord
-  belongs_to :tags
-  belongs_to :products
+  belongs_to :tag
+  belongs_to :product
 
 end
