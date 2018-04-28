@@ -8,6 +8,7 @@ end
 #Add Devise, Faker, anything for omniauth?
 
 gem 'devise'
+gem 'omniauth'
 gem 'carrierwave', '~> 1.0'
 gem 'faker'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
