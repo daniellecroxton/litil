@@ -8,7 +8,7 @@ RSpec.describe Business, type: :model do
 
   let(:business) {
     Business.create(
-      :name => "Tees and Things",
+      :name => "Tees and Things"
     )
   }
 

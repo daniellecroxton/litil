@@ -1,18 +1,22 @@
 Products
 <ul>
-  <%= @products.each do |product| %>
-  <li><%= product %></li>
+  <% @products.each do |product| %>
+  <li><%= product.name %></li>
 <% end %>
 </ul>
-<ul><%= @businesses.each do |item| %>
-  <li><%= item %>  </li>
+Businesses
+<ul><% @businesses.each do |item| %>
+  <li><%= item.name %>  </li>
   <% end %> </ul>
-<ul><%= @tags.each do |item| %>
-  <li><%= item %>  </li>
+Tags
+<ul><% @tags.each do |item| %>
+  <li><%= item.name %>  </li>
   <% end %> </ul>
-<ul><%= @categories.each do |item| %>
-  <li><%= item %> </li>
+Categories
+<ul><% @categories.each do |item| %>
+  <li><%= item.name %> </li>
   <% end %> </ul>
-<ul><%= @users.each do |item| %>
-  <li><%= item %>  </li>
+Users
+<ul><% @users.each do |item| %>
+  <li><%= item.name %>  </li>
   <% end %> </ul>
