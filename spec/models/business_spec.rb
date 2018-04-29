@@ -9,8 +9,6 @@ RSpec.describe Business, type: :model do
   let(:business) {
     Business.create(
       :name => "Tees and Things",
-      :user_id => @user.id,
-      :category_id => @category.id
     )
   }
 
