@@ -4,6 +4,6 @@ class BusinessesController < ApplicationController
     @products = Product.all
     @tags = Tag.all
     @categories = Category.all
-    @user = User.all
+    @users = User.all
   end
 end

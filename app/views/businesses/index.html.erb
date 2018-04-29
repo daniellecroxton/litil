@@ -1,5 +1,18 @@
-<%= @products %>
-<%= @businesses %>
-<%= @tags %>
-<%= @categories %>
-<%= @users %>
+Products
+<ul>
+  <%= @products.each do |product| %>
+  <li><%= product %></li>
+<% end %>
+</ul>
+<ul><%= @businesses.each do |item| %>
+  <li><%= item %>  </li>
+  <% end %> </ul>
+<ul><%= @tags.each do |item| %>
+  <li><%= item %>  </li>
+  <% end %> </ul>
+<ul><%= @categories.each do |item| %>
+  <li><%= item %> </li>
+  <% end %> </ul>
+<ul><%= @users.each do |item| %>
+  <li><%= item %>  </li>
+  <% end %> </ul>

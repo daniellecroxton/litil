@@ -7,6 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
+User.delete_all
+Business.delete_all
+Product.delete_all
+Tag.delete_all
+Category.delete_all
+
 10.times do
   User.create(
     name: Faker::Name.name,
@@ -48,7 +54,7 @@ end
 
 counter = 1
 Product.all.each do |product|
-  product.business_id = counter
+  product.business_ids << counter
   product.save
   counter += 1
 end
@@ -62,19 +68,19 @@ end
 
 counter = 1
 Product.all.each do |product|
-  product.tag_id = counter
+  product.tag_ids << counter
   product.save
   counter += 1
 end
 
 Product.all.each do |product|
-  product.tag_id = counter
+  product.tag_ids << counter
   product.save
   counter += 1
 end
 
 Product.all.each do |product|
-  product.tag_id = counter
+  product.tag_ids << counter
   product.save
   counter += 1
 end
