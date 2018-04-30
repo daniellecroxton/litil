@@ -48,7 +48,7 @@ end
 
 10.times do
   Category.create(
-    name: Faker::Commerce.department
+    name: Faker::Commerce.unique.department(1)
   )
 end
 
