@@ -5,6 +5,6 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find_by(id: params[:id])
-    @businesses = Business.business_by_category(params[:id])
+    @businesses = Business.by_category(params[:id])
   end
 end
