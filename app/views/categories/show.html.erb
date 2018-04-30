@@ -2,5 +2,7 @@
 
 <h2>Related Businesses</h2>
 <ul>
-  <li><%= %></li>
+  <li><%= @businesses.each do |business|  %>
+    <%= business.name %>
+  <% end %></li>
 </ul>
