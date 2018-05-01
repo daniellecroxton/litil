@@ -6,4 +6,8 @@ class BusinessesController < ApplicationController
     @categories = Category.all
     @users = User.all
   end
+
+  def new
+    @business = Business.new
+  end
 end
