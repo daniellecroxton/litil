@@ -1,1 +1,28 @@
 <h1>Add a New Business</h1>
+
+<%= form_for @business do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, required: true %><br>
+
+  <%= f.label :website %>
+  <%= f.text_field :website %><br>
+
+  <%= f.label :phone %>
+  <%= f.text_field :phone %><br>
+
+  <!-- <% Category.all.each do |category| %>
+    <%= f.radio_button :category_id, category.id %>
+    <%= f.label :category_id, category.name %>
+  <% end %> -->
+
+  Select a category:<br />
+    <%= f.collection_radio_buttons :category_id, Category.all, :id, :name %><br />
+    <%= f.fields_for :category, @business.category do |category_fields| %>
+  or add a new category:
+    <%= category_fields.text_field :name %>
+    <% end %><br />
+
+
+  <%= f.submit %>
+
+<% end %>
