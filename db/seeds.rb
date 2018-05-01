@@ -66,7 +66,7 @@ Business.all.each do |business|
   counter += 1
 end
 
-counter = 733
+counter = 751
 Product.all.each do |product|
   product.tag_ids << counter
   product.save

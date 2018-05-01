@@ -1,0 +1,7 @@
+<h1><%= @product.name %></h1>
+
+<!-- product.image -->
+
+<% @product.tags.each do |tag|  %>
+  <%= link_to tag.name, tag_path(tag) %>
+<% end %>
