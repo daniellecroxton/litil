@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  root to: "application#index"
+  root to: 'business#search'
   resources :businesses do
+    collection do
+      get 'search'
+    end
     resources :products
   end
   resources :tags

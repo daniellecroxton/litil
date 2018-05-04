@@ -1,4 +1,8 @@
 class BusinessesController < ApplicationController
+
+  def search
+  end
+
   def index
     @businesses = Business.all
     @products = Product.all
@@ -25,5 +29,5 @@ class BusinessesController < ApplicationController
 
   def delete
   end
-  
+
 end
