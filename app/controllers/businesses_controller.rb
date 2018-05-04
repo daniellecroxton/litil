@@ -10,4 +10,20 @@ class BusinessesController < ApplicationController
   def new
     @business = Business.new
   end
+
+  def edit
+  end
+
+  def show
+  end
+
+  def create
+  end
+
+  def update
+  end
+
+  def delete
+  end
+  
 end
