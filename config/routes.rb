@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  root to: 'business#search'
+  root to: 'businesses#search'
   resources :businesses do
     collection do
       get 'search'

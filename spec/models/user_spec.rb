@@ -7,7 +7,7 @@ RSpec.describe User, type: :model do
     # browser driver configured in spec/support/capybara.rb
     scenario "with correct details", js: true do
 
-      create(:user, email: "someone@example.tld", password: "somepassword")
+      User.create(email: "someone@example.tld", password: "somepassword")
 
       visit "/"
 
@@ -32,7 +32,7 @@ RSpec.describe User, type: :model do
 
     scenario "unconfirmed user cannot login" do
 
-      create(:user, skip_confirmation: false, email: "e@example.tld", password: "test-password")
+      User.create(skip_confirmation: false, email: "e@example.tld", password: "test-password")
 
       visit new_user_session_path
 
@@ -46,7 +46,7 @@ RSpec.describe User, type: :model do
     scenario "locks account after 10 failed attempts" do
 
       email = "someone@example.tld"
-      create(:user, email: email, password: "somepassword")
+      User.create(email: email, password: "somepassword")
 
       visit new_user_session_path
 
@@ -138,7 +138,7 @@ feature "User registers" do
 
     scenario "already registered email" do
 
-      create(:user, email: "dave@example.tld")
+      User.create(email: "dave@example.tld")
 
       fill_in "Email", with: "dave@example.tld"
       fill_in "Password", with: "test-password"
