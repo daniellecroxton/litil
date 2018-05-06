@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Business, :type => :model do
-  let(:category) { Category.create(:name => "Clothing & Accessories") }
+  let(:category) { Category.create(:name => "Clothing & Accessories", :id => 609) }
 
   let(:business) {
     Business.create(
@@ -45,5 +45,15 @@ RSpec.describe Business, :type => :model do
 
   #scope most recent
 
+
   #class method .by_category
+  describe ".by_category" do
+    before(:each) do
+      business.category = category
+    end
+    it "only returns businesses that belong to the provided category id" do
+      expect(Business.by_category(609)).to include("Spirit Friends")
+      expect(Business.by_category(610)).to_not include("Spirit Friends")
+    end
+  end
 end
