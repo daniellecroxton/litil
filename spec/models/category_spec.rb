@@ -1,13 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe Category, :type => :model do
-  before do
-    @category = Category.first
-    @category.businesses << Business.first
-  end
+  let(:category) { Category.create(:name => "Clothing & Accessories") }
+
+  let(:business) {
+    Business.create(
+      :name => "Spirit Friends"
+    )
+  }
 
   it "is valid with a name" do
-    expect(@category).to be_valid
+    expect(category).to be_valid
   end
 
   it "is not valid without a name" do
@@ -15,6 +18,7 @@ RSpec.describe Category, :type => :model do
   end
 
   it 'has many businesses' do
-    expect(@category.businesses).to include(Bustiness.first)
+    category.businesses << business
+    expect(category.businesses).to include(business)
   end
 end
