@@ -5,9 +5,9 @@ RSpec.describe Business, :type => :model do
 
   let(:business) {
     Business.create(
-      :name => "Spirit Friends"
-      :latitude => 40.769
-      :longitude => 111.889
+      :name => "Spirit Friends",
+      :latitude => 40.769,
+      :longitude => 111.889,
       :full_street_address => "60 E. South Temple, Salt Lake City, UT 84111",
       :website => "www.spiritfriends.com",
       :phone => "555-555-5555",
