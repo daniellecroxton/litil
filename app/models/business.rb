@@ -16,7 +16,7 @@ class Business < ApplicationRecord
   # end
 
   def self.by_category(category_id)
-    self.where(:category_id => category_id)
+    self.where(category_id: category_id)
   end
 
 end
