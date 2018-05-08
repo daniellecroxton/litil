@@ -44,11 +44,10 @@ RSpec.describe Business, :type => :model do
   end
 
   #scope most recent
-  # scope :recent, -> { order(:created_at, :desc) }
   describe ".recent" do
     it "returns 3 most recently created businesses" do
       expect(Business.recent.count).to eq(3)
-      expect(Business.recent).to include Business.last
+      expect(Business.recent).to include Business.last(3)
     end
   end
 

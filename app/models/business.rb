@@ -3,6 +3,7 @@ class Business < ApplicationRecord
   belongs_to :category, optional: true
   has_many :businesses_products
   has_many :products, through: :businesses_products
+  validates :name, presence: true
   mount_uploader :image, ImageUploader
   scope :recent, -> { order("businesses.created_at DESC").limit(3) }
   # accepts_nested_attributes_for :category
