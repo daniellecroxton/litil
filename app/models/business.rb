@@ -4,7 +4,7 @@ class Business < ApplicationRecord
   has_many :businesses_products
   has_many :products, through: :businesses_products
   mount_uploader :image, ImageUploader
-  scope :recent, -> { order(:created_at, :desc) }
+  scope :recent, -> { order("businesses.created_at DESC").limit(3) }
   # accepts_nested_attributes_for :category
   #
   # def category_attributes=(category_attributes)

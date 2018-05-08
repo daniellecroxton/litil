@@ -44,6 +44,13 @@ RSpec.describe Business, :type => :model do
   end
 
   #scope most recent
+  # scope :recent, -> { order(:created_at, :desc) }
+  describe ".recent" do
+    it "returns 3 most recently created businesses" do
+      expect(Business.recent.count).to equal 3
+      expect(Business.recent).to_not include("Spirit Friends")
+    end
+  end
 
 
   #class method .by_category
