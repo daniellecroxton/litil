@@ -9,6 +9,7 @@ end
 
 gem 'devise'
 gem 'omniauth'
+gem 'omniauth-google-oauth2'
 gem 'carrierwave', '~> 1.0'
 gem 'faker'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
