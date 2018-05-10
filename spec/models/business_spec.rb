@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Business, :type => :model do
-  let(:new_category) { Category.create(:name => "Clothing & Accessories", :id => 609) }
+  let(:new_category) { Category.create(:name => "Clothing & Accessories") }
 
   let(:business) {
     Business.create(
@@ -10,6 +10,30 @@ RSpec.describe Business, :type => :model do
       :longitude => 111.889,
       :full_street_address => "60 E. South Temple, Salt Lake City, UT 84111",
       :website => "www.spiritfriends.com",
+      :phone => "555-555-5555",
+      :rating => 5
+    )
+  }
+
+  let(:business_2) {
+    Business.create(
+      :name => "MRM",
+      :latitude => 40.769,
+      :longitude => 111.889,
+      :full_street_address => "60 E. South Temple, Salt Lake City, UT 84111",
+      :website => "www.mrm.com",
+      :phone => "555-555-5555",
+      :rating => 4
+    )
+  }
+
+  let(:business_3) {
+    Business.create(
+      :name => "Vivint",
+      :latitude => 40.769,
+      :longitude => 111.889,
+      :full_street_address => "60 E. South Temple, Salt Lake City, UT 84111",
+      :website => "www.vivint.com",
       :phone => "555-555-5555",
       :rating => 5
     )
@@ -34,8 +58,8 @@ RSpec.describe Business, :type => :model do
   end
 
   it "belongs to one category" do
-    business.category = category
-    expect(business.category).to eq(category)
+    business.category = new_category
+    expect(business.category).to eq(new_category)
   end
 
   it "belongs to one user" do
@@ -58,7 +82,7 @@ RSpec.describe Business, :type => :model do
       business.category = new_category
     end
     it "only returns businesses that belong to the provided category id" do
-      expect(Business.by_category(609)).to include("Spirit Friends")
+      expect(Business.by_category(new_category.id)).to include("Spirit Friends")
       expect(Business.by_category(610)).to_not include("Spirit Friends")
     end
   end
