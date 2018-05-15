@@ -22,6 +22,20 @@ class BusinessesController < ApplicationController
   end
 
   def create
+    redirect_to business_path(params[:id])
+  end
+
+  def create
+    # raise params.inspect
+    @business = Business.new(params)
+    respond_to do |format|
+      if @business.save
+        params[:id] = @business.id
+        format.html { redirect_to business_path(@business), notice: "New business added." }
+      else
+        format.html { render :new }
+      end
+    end
   end
 
   def update
