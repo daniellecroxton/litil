@@ -16,6 +16,7 @@ class BusinessesController < ApplicationController
   end
 
   def edit
+    @business = Business.find_by_id(params[:id])
   end
 
   def show
