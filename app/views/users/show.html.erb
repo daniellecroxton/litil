@@ -11,7 +11,9 @@
 <%= link_to "Edit your username/password", edit_user_registration_path %><br /><br />
 
 <% if @user.businesses.any? %>
-  <%= render partial: "business_info", locals: {user: @user} %>
+  <%= user.businesses.each do |business| %>
+    <%= render partial: "business_info", locals: {business: business} %>
+  <% end %>
 <% else %>
   Looks like you haven't added any businesses yet.
 <% end %><br />

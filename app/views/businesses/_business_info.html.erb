@@ -1,7 +1,5 @@
-<%= user.businesses.each do |business| %>
   <%= link_to business.name, business_path(business) %>
   <%= business.category.name %>
   <%= business.website %>
   <%= business.full_street_address %>
   <%= business.phone %>
-<% end %>
