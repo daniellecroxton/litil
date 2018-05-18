@@ -1,24 +1,6 @@
 Business Index Page
 
-Products
-<ul>
-  <% @products.each do |product| %>
-  <li><%= product.name %></li>
-<% end %>
-</ul>
 Businesses
-<ul><% @businesses.each do |item| %>
-  <li><%= item.name %>  </li>
-  <% end %> </ul>
-Tags
-<ul><% @tags.each do |item| %>
-  <li><%= item.name %>  </li>
-  <% end %> </ul>
-Categories
-<ul><% @categories.each do |item| %>
-  <li><%= item.name %> </li>
-  <% end %> </ul>
-Users
-<ul><% @users.each do |item| %>
-  <li><%= item.name %>  </li>
+<ul><% @businesses.each do |business| %>
+  <li>    <%= render partial: "business_info", locals: {business: business} %> </li>
   <% end %> </ul>
