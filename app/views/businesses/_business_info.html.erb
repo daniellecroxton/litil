@@ -1,5 +1,6 @@
   <%= link_to business.name, business_path(business) %><br />
-  <%= business.category.name %><br />
-  <%= business.website %><br />
-  <%= business.full_street_address %><br />
-  <%= business.phone %><br />
+  Category: <%= business.category.name unless business.category == nil %><br />
+  Website: <%= business.website unless nil? %><br />
+  Address: <%= business.full_street_address unless nil? %><br />
+  Phone: <%= business.phone unless nil? %><br />
+  <br />
