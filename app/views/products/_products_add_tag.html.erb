@@ -1,0 +1,7 @@
+<% form_for @product do |p| %>
+  <% p.fields_for :tags do |t| %>
+    <%= t.label :name, 'Add tag:' %>
+    <%= t.text_field :name %>
+  <% end %>
+  <%= p.submit %>
+<% end %>
