@@ -9,6 +9,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @business = Business.find_by_id(params[:business][:id])
   end
 
   def edit
