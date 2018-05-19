@@ -20,7 +20,7 @@
     <%= f.collection_radio_buttons :category_id, Category.all, :id, :name %><br />
     <%= f.fields_for :category, business.category do |category_fields| %>
   or add a new category:
-    <%= category_fields.text_field :name, value: %>
+    <%= category_fields.text_field :name, value: "" %>
     <% end %><br />
 
 
