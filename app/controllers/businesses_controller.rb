@@ -34,8 +34,9 @@ class BusinessesController < ApplicationController
       if @business.valid?
         # params[:id] = @business.id
         current_user.id = @business.user_id
-        Category.find_or_create_by(id: params[:category_id])
+        Category.find_or_create_by(name: params[:category][:name])
         @business.save
+        raise params.inspect
         format.html { redirect_to business_path(@business), notice: "New business added." }
       else
         format.html { render :new }
@@ -61,7 +62,7 @@ class BusinessesController < ApplicationController
       :rating,
       :image,
       :user_id,
-      :category_id
+      :category
     )
   end
 end
