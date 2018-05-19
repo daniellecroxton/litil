@@ -12,6 +12,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @product = Product.find_by_id(params[:id])
   end
 
   def update

@@ -1,1 +1,3 @@
-Product Edit Page with add tag?
+<h1>Edit <%= @product.name %></h1><br />
+
+<%= render partial: "products_form", locals: {product: @product} %>
