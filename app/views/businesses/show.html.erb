@@ -1,6 +1,6 @@
 <%= render partial: "business_info", locals: {business: @business} %>
 
-<%= if @business.user_id == current_user.id %>
+<% if @business.user_id == current_user.id %>
   <%= link_to "Edit your business", edit_business_path %><br />
   <%= link_to "Add a product", new_business_product_path %><br />
 <% end %>

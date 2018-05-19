@@ -36,7 +36,7 @@ class BusinessesController < ApplicationController
         current_user.id = @business.user_id
         Category.find_or_create_by(name: params[:category][:name])
         @business.save
-        raise params.inspect
+        # raise params.inspect
         format.html { redirect_to business_path(@business), notice: "New business added." }
       else
         format.html { render :new }
