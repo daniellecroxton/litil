@@ -1,5 +1,3 @@
-Business Show Page
-
 <%= render partial: "business_info", locals: {business: @business} %>
 
 <%= link_to "Edit your business", edit_business_path if @business.user_id == current_user.id %>
