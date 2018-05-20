@@ -1,16 +1,18 @@
-<%= form_for product do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name, required: true %><br>
+<%= form_for business do |b| %>
+  <%= b.fields_for product do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name, required: true %><br>
 
-  <!-- add image? -->
+    <!-- add image? -->
 
-  Add Tags:<br />
-    <%= f.collection_check_boxes :tag_id, Tag.all, :id, :name %><br />
-    <%= f.fields_for :tag, products.tags do |tag_fields| %>
-      <%= tag_fields.text_field :name, value: "" %>
-    <% end %><br />
+    Add Tags:<br />
+      <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %><br />
+      <%= f.fields_for :tag, product.tags do |tag_fields| %>
+        <%= tag_fields.text_field :name, value: "" %>
+      <% end %><br />
 
 
-  <%= f.submit %>
+    <%= f.submit %>
 
+  <% end %>
 <% end %>

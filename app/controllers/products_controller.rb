@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find_by(id: params[:id])
+    @business = Business.find_by_id(params[:business_id])
   end
 
   def index
@@ -9,21 +10,25 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    @business = Business.find_by_id(params[:business][:id])
+    @business = Business.find_by_id(params[:business_id])
   end
 
   def create
     # raise current_user.inspect
     @product = Product.new(product_params)
-    @business = Business.find_by_id(params[:business][:id])
+    @business = Business.find_by_id(params[:business_id])
     respond_to do |format|
+      # raise params.inspect
+
       if @product.valid?
+
         @business << @product
         Tag.find_or_create_by(name: params[:tag][:name])
         @product.save
-        raise params.inspect
+        # raise params.inspect
         format.html { redirect_to business_path(@business), notice: "New product added." }
       else
+        @product.errors.messages
         format.html { render :new }
         #add error message
       end

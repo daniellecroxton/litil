@@ -24,10 +24,6 @@ class BusinessesController < ApplicationController
   end
 
   def create
-    redirect_to business_path(params[:id])
-  end
-
-  def create
     # raise current_user.inspect
     @business = Business.new(business_params)
     respond_to do |format|
@@ -46,6 +42,15 @@ class BusinessesController < ApplicationController
   end
 
   def update
+    @business = Business.find_by_id(params[:id])
+
+    respond_to do |format|
+      if @business.update(business_params)
+        format.html { redirect_to @business, notice: 'Business was successfully updated.' }
+      else
+        format.html { render :edit }
+      end
+    end
   end
 
   def delete

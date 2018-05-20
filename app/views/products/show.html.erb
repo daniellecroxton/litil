@@ -6,4 +6,4 @@
   <%= link_to tag.name, tag_path(tag) %>
 <% end %>
 
-<%= render partial: "products_add_tag", locals: {product: @product} %>
+<%= render partial: "products_add_tag", locals: {product: @product, business: @business} %>

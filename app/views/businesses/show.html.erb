@@ -6,5 +6,5 @@
 <% end %>
 
 <ul><% @business.products.each do |product| %>
-  <li><%= link_to product.name, business_product_path %></li>
+  <li><%= link_to product.name, business_product_path(@business, product) %></li>
 <% end %></ul>
