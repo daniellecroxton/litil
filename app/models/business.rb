@@ -21,11 +21,16 @@ class Business < ApplicationRecord
 
   def self.search(search)
     if search
-      self.joins(product: :tag)
-      .where("products.name = :s OR tags.name = :s OR businesses.name = :s", s: "#{search}")
+      results = self.joins(products: :tags)
+      .where("products.name LIKE :s OR tags.name LIKE :s OR businesses.name LIKE :s", s: "%#{search}%")
+        if results.nil?
+          "Looks like we couldn't find any businesses that match your search."
+        else
+          results
+        end
       # find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
     else
-      find(:all)
+      self.all
     end
   end
 

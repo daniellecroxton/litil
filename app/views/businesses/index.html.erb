@@ -1,6 +1,6 @@
 Business Index Page - Search Results
 
-Businesses
-<ul><% @businesses.each do |business| %>
+<h2>Businesses</h2>
+<ul><% @results.each do |business| %>
   <li>    <%= render partial: "business_info", locals: {business: business} %> </li>
   <% end %> </ul>

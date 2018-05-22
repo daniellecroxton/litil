@@ -1,15 +1,15 @@
 class BusinessesController < ApplicationController
 
   def search
-    @results = ProductsTag.search(params[:search])
   end
 
   def index
-    @businesses = Business.all
-    @products = Product.all
-    @tags = Tag.all
-    @categories = Category.all
-    @users = User.all
+    @results = Business.search(params[:search])
+    # @businesses = Business.all
+    # @products = Product.all
+    # @tags = Tag.all
+    # @categories = Category.all
+    # @users = User.all
   end
 
   def new
