@@ -1,1 +1,9 @@
-Search Page
+<h1>Find a Business</h1>
+
+[Find a business search form]
+
+
+<h2>Recently added businesses</h2>
+  <ul><% Business.recent.each do |biz| %>
+    <li><%= link_to biz.name, biz %></li>
+  <% end %></ul>
