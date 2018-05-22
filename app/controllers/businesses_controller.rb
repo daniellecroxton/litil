@@ -1,6 +1,7 @@
 class BusinessesController < ApplicationController
 
   def search
+    @results = ProductsTag.search(params[:search])
   end
 
   def index

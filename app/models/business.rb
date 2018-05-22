@@ -19,4 +19,17 @@ class Business < ApplicationRecord
     self.where(category_id: category_id)
   end
 
+  def self.search(search)
+    if search
+      self.joins(product: :tag)
+      .where("products.name = :s OR tags.name = :s OR businesses.name = :s", s: "#{search}")
+      # find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+    else
+      find(:all)
+    end
+  end
+
+#
+# @editions = Edition.joins(model: :manufacturer)
+#   .where("models.name = :q OR manufacturers.name = :q OR editions.name = :q", q: params[:q])
 end
