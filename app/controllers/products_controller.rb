@@ -15,14 +15,14 @@ class ProductsController < ApplicationController
 
   def create
     # raise current_user.inspect
-    @product = Product.new(product_params)
     @business = Business.find_by_id(params[:business_id])
+    @product = @business.products.new(product_params)
+
     respond_to do |format|
       # raise params.inspect
 
       if @product.valid?
 
-        @business << @product
         Tag.find_or_create_by(name: params[:tag][:name])
         @product.save
         # raise params.inspect
