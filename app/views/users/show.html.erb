@@ -10,12 +10,14 @@
 
 <%= link_to "Edit your username/password", edit_user_registration_path %><br /><br />
 
+<%= link_to "Add a business", new_business_path %><br />
+
+<h2>Businesses you've added</h2>
+
 <% if @user.businesses.any? %>
-  <%= user.businesses.each do |business| %>
-    <%= render partial: "business_info", locals: {business: business} %>
+  <% @user.businesses.each do |business| %>
+    <%= render partial: "businesses/business_info", locals: {business: business} %>
   <% end %>
 <% else %>
   Looks like you haven't added any businesses yet.
 <% end %><br />
-
-<%= link_to "Add a business", new_business_path %><br />
