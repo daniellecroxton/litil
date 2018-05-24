@@ -1,6 +1,8 @@
 class Business < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :category, optional: true
+  attr_accessor :new_category_name
+  before_save :create_category_from_name
   has_many :businesses_products
   has_many :products, through: :businesses_products
   validates :name, presence: true
@@ -14,6 +16,10 @@ class Business < ApplicationRecord
   #     self.category_id = category
   #   end
   # end
+
+  def create_category_from_name
+    Category.find_or_create_by(:name => new_category_name) unless new_category_name.blank?
+  end
 
   def self.by_category(category_id)
     self.where(category_id: category_id)

@@ -26,13 +26,15 @@ class BusinessesController < ApplicationController
 
   def create
     # raise current_user.inspect
-    @business = Business.new(business_params)
+    @business = current_user.businesses.new(business_params)
+    # raise business_params.inspect
     respond_to do |format|
       if @business.valid?
         # params[:id] = @business.id
-        current_user.id = @business.user_id
-        Category.find_or_create_by(name: params[:category][:name])
-        raise params.inspect
+        # current_user.id = @business.user_id
+        # raise params.inspect
+        #
+        # Category.find_or_create_by(name: params[:category][:name])
 
         @business.save
         # raise params.inspect
@@ -70,7 +72,8 @@ class BusinessesController < ApplicationController
       :rating,
       :image,
       :user_id,
-      :category
+      :category_id,
+      :new_category_name
     )
   end
 end
