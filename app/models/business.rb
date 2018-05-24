@@ -18,7 +18,7 @@ class Business < ApplicationRecord
   # end
 
   def create_category_from_name
-    Category.find_or_create_by(:name => new_category_name) unless new_category_name.blank?
+    create_category(:name => new_category_name) unless new_category_name.blank?
   end
 
   def self.by_category(category_id)
