@@ -1,6 +1,5 @@
-<!-- <%= form_for(product, :url=>business_products_path(business.id, product.id)) do |f| %> -->
-  <!-- <%= b.fields_for product do |f| %> -->
-<%= form_for product do |f| %>
+
+<%= form_for([business, product]) do |f| %>
 
     <%= f.label :name %>
     <%= f.text_field :name, required: true %><br>
