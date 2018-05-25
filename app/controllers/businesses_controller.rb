@@ -17,11 +17,11 @@ class BusinessesController < ApplicationController
   end
 
   def edit
-    @business = Business.find_by_id(params[:id])
+    @business = current_business
   end
 
   def show
-    @business = Business.find_by_id(params[:id])
+    @business = current_business
   end
 
   def create
@@ -47,7 +47,7 @@ class BusinessesController < ApplicationController
   end
 
   def update
-    @business = Business.find_by_id(params[:id])
+    @business = current_business
 
     respond_to do |format|
       if @business.update(business_params)
@@ -62,6 +62,10 @@ class BusinessesController < ApplicationController
   end
 
   private
+
+  def current_business
+    Business.find_by_id(params[:id])
+  end
 
   def business_params
     params.require(:business).permit(

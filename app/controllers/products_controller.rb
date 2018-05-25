@@ -37,9 +37,13 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find_by_id(params[:id])
+    @business = Business.find_by_id(params[:business_id])
   end
 
   def update
+    @product = Product.find_by_id(params[:id])
+    @business = Business.find_by_id(params[:business_id])
+
   end
 
   def delete
