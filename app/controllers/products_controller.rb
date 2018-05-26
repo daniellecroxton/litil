@@ -20,17 +20,13 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       # raise params.inspect
-
       if @product.valid?
-
-        Tag.find_or_create_by(name: params[:tag][:name])
+        Product.create_tag_from_name unless params[:new_tag_name].blank?
         @product.save
-        # raise params.inspect
         format.html { redirect_to business_path(@business), notice: "New product added." }
       else
         @product.errors.messages
         format.html { render :new }
-        #add error message
       end
     end
   end
@@ -43,7 +39,13 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find_by_id(params[:id])
     @business = Business.find_by_id(params[:business_id])
-
+    respond_to do |format|
+      if @product.update(product_params)
+        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+      else
+        format.html { render :edit }
+      end
+    end
   end
 
   def delete
@@ -54,6 +56,7 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(
       :name,
+      :new_tag_name,
       :tags => [:name]
     )
   end
