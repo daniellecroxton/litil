@@ -1,14 +1,7 @@
-<% if business.errors.any? %>
-    <h2><%= pluralize(business.errors.count, "error") %> prohibited this business from being saved:</h2>
-
-    <ul>
-    <% business.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-<% end %>
-
 <%= form_for business do |f| %>
+
+<%= form_errors_for business %>
+
   <%= f.label :name %>
   <%= f.text_field :name, required: true %><br>
 
