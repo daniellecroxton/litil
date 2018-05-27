@@ -2,10 +2,6 @@
 
 <!-- product.image -->
 
-<!-- <% @product.tags.each do |tag|  %>
-  <%= link_to tag.name, tag_path(tag) %>
-<% end %> -->
-
 <%= product_tag_links(@product) %>
 
 <%= render partial: "products_add_tag", locals: {product: @product, business: @business} %>
