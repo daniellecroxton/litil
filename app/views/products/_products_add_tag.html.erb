@@ -1,9 +1,9 @@
-<%= form_for business do |b| %>
-  <%= b.fields_for product do |p| %>
-    <%= p.fields_for :tags do |t| %>
-      <%= t.label :name, 'Add tag:' %>
-      <%= t.text_field :name %>
-    <% end %>
-    <%= p.submit %>
+<%= form_for([business, product]) do |f| %>
+
+    Add tag:<br />
+        <%= f.text_field :new_tag_name %>
+      <br />
+
+    <%= f.submit %>
+
   <% end %>
-<% end %>

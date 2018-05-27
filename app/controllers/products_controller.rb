@@ -16,13 +16,15 @@ class ProductsController < ApplicationController
   def create
     # raise current_user.inspect
     @business = Business.find_by_id(params[:business_id])
-    @product = @business.products.new(product_params)
+    @product = Product.new(product_params)
 
     respond_to do |format|
-      # raise params.inspect
       if @product.valid?
-        Product.create_tag_from_name unless params[:new_tag_name].blank?
+        @product.create_tag_from_name unless params[:new_tag_name].blank?
+        @business.products << @product
         @product.save
+        # raise params.inspect
+
         format.html { redirect_to business_path(@business), notice: "New product added." }
       else
         @product.errors.messages
@@ -39,9 +41,13 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find_by_id(params[:id])
     @business = Business.find_by_id(params[:business_id])
+    # raise params[:product][:new_tag_name].inspect
     respond_to do |format|
-      if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+      if @product.valid?
+        @tag = Tag.find_or_create_by(name: params[:product][:new_tag_name])
+        @product.tags << @tag
+        @product.save
+        format.html { redirect_to business_product_path(@business, @product), notice: 'Product was successfully updated.' }
       else
         format.html { render :edit }
       end

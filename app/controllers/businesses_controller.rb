@@ -30,7 +30,7 @@ class BusinessesController < ApplicationController
     # raise business_params.inspect
     respond_to do |format|
       if @business.valid?
-        Business.create_category_from_name unless params[:new_category_name].blank?
+        @business.create_category_from_name unless params[:new_category_name].blank?
         @business.save
         format.html { redirect_to business_path(@business), notice: "New business added." }
       else
