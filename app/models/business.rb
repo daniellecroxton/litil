@@ -1,6 +1,6 @@
 class Business < ApplicationRecord
   belongs_to :user, optional: true
-  belongs_to :category, optional: true
+  belongs_to :category, required: true
   attr_accessor :new_category_name
   before_save :create_category_from_name
   has_many :businesses_products
@@ -8,6 +8,8 @@ class Business < ApplicationRecord
   validates :name, presence: true
   mount_uploader :image, ImageUploader
   scope :recent, -> { order("businesses.created_at DESC").limit(3) }
+  validates_associated :category
+
   # accepts_nested_attributes_for :category
   #
   # def category_attributes=(category_attributes)
