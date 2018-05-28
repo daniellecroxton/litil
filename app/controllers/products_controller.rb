@@ -63,7 +63,7 @@ class ProductsController < ApplicationController
     params.require(:product).permit(
       :name,
       :new_tag_name,
-      :tags => [:name]
+      :tag_ids => []
     )
   end
 
