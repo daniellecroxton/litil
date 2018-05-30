@@ -53,7 +53,11 @@ class BusinessesController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
+    @business = current_business
+    @user = current_user
+    @business.destroy!
+    render '/users/show', :notice => "Your business has been deleted"
   end
 
   private

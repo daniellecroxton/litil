@@ -1,7 +1,8 @@
-<%= render partial: "business_info", locals: {business: @business} %>
+<%= render partial: "businesses/business_info", locals: {business: @business} %>
 
 <% if current_user && @business.user_id == current_user.id %>
   <%= link_to "Edit your business", edit_business_path(@business) %><br />
+  <%= link_to "Delete your business", business_path(@business), :confirm => "Are you sure?", :method => :delete %><br />
   <%= link_to "Add a product", new_business_product_path(@business) %><br />
 <% end %>
 

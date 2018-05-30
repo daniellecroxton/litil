@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
 
   def show
-    @product = Product.find_by(id: params[:id])
+    @product = current_product
     @business = Business.find_by_id(params[:business_id])
   end
 
@@ -34,12 +34,12 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @product = Product.find_by_id(params[:id])
+    @product = current_product
     @business = Business.find_by_id(params[:business_id])
   end
 
   def update
-    @product = Product.find_by_id(params[:id])
+    @product = current_product
     @business = Business.find_by_id(params[:business_id])
     # raise params[:product][:new_tag_name].inspect
     respond_to do |format|
@@ -54,10 +54,18 @@ class ProductsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
+    @product = current_product
+    @business = Business.find_by_id(params[:business_id])
+    @product.destroy!
+    render '/businesses/show', :notice => "Your product has been deleted"
   end
 
   private
+
+  def current_product
+    Product.find_by_id(params[:id])
+  end
 
   def product_params
     params.require(:product).permit(

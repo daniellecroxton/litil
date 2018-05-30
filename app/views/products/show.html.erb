@@ -5,3 +5,5 @@
 <%= product_tag_links(@product) %>
 
 <%= render partial: "products_add_tag", locals: {product: @product, business: @business} %>
+
+<%= link_to "Delete product", business_product_path, :confirm => "Are you sure?", :method => :delete %>
