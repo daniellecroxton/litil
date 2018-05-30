@@ -27,9 +27,11 @@ class BusinessesController < ApplicationController
   def create
     # raise current_user.inspect
     @business = current_user.businesses.new(business_params)
-    @business.create_category_from_name unless params[:new_category_name].blank?
+    @business.create_category_from_name unless business_params[:new_category_name].blank?
     # raise business_params.inspect
     respond_to do |format|
+      # binding.pry
+
       if @business.valid? && @business.category
         @business.save
         format.html { redirect_to business_path(@business), notice: "New business added." }
