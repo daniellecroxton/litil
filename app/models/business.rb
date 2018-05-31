@@ -2,7 +2,6 @@ class Business < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :category, required: true
   attr_accessor :new_category_name
-  before_save :create_category_from_name
   has_many :businesses_products
   has_many :products, through: :businesses_products
   validates :name, presence: true

@@ -1,5 +1,5 @@
   <h1><%= link_to business.name, business_path(business) %></h1>
-  Category: <%= business.category.name unless business.category == nil %><br />
+  Category: <%= link_to business.category.name, category_path(business.category) unless business.category == nil %><br />
   Website: <%= link_to business.website %><br />
   Address: <%= business.full_street_address %><br />
   Phone: <%= business.phone %><br />

@@ -2,7 +2,9 @@
 
 <h2>Related Businesses</h2>
 <ul>
-  <li><% @businesses.each do |business|  %>
-    <%= link_to business.name, business %>
-  <% end %></li>
+  <% @businesses.each do |business|  %>
+    <li>
+      <%= link_to business.name, business %>
+    </li>
+  <% end %>
 </ul>
