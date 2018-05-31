@@ -8,7 +8,6 @@ class Business < ApplicationRecord
   validates :name, presence: true
   mount_uploader :image, ImageUploader
   scope :recent, -> { order("businesses.created_at DESC").limit(3) }
-  validates_associated :category
 
   # accepts_nested_attributes_for :category
   #
@@ -30,16 +29,9 @@ class Business < ApplicationRecord
   end
 
   def self.search(search)
-    if search
-      results = self.joins(products: :tags)
+    if search != ""
+      self.joins(products: :tags)
       .where("products.name LIKE :s OR tags.name LIKE :s OR businesses.name LIKE :s", s: "%#{search}%")
-        # raise results.inspect
-        if results.nil?
-          "Looks like we couldn't find any businesses that match your search."
-        else
-          "Here are your results:"
-          results.uniq
-        end
     else
       self.all
     end

@@ -16,11 +16,12 @@ class ProductsController < ApplicationController
   def create
     # raise current_user.inspect
     @business = Business.find_by_id(params[:business_id])
-    @product = Product.new(product_params)
+    @product = @business.products.new(product_params)
 
     respond_to do |format|
+      # binding.pry
       if @product.valid?
-        @product.create_tag_from_name unless params[:new_tag_name].blank?
+        @product.create_tag_from_name if product_params[:new_tag_name]
         @business.products << @product
         @product.save
         # raise params.inspect

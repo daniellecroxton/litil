@@ -8,7 +8,9 @@ class Product < ApplicationRecord
   validates :name, presence: true
 
   def create_tag_from_name
-    create_tag(:name => new_tag_name)
+    # create_tag(:name => new_tag_name)
+    new_tag = Tag.find_or_create_by(name: new_tag_name)
+    self.tags << new_tag
   end
 
 end

@@ -1,7 +1,6 @@
-<%= form_for([business, product]) do |f| %>
-
 <%= form_errors_for product %>
 
+<%= form_for([business, product]) do |f| %>
 
     <%= f.label :name %>
     <%= f.text_field :name, required: true %><br>

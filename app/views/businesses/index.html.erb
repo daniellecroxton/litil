@@ -1,6 +1,14 @@
 Business Index Page - Search Results
 
 <h2>Businesses</h2>
-<ul><% @results.each do |business| %>
-  <li>    <%= render partial: "business_info", locals: {business: business} %> </li>
-  <% end %> </ul>
+
+<% if @results.empty? %>
+  Looks like we couldn't find any businesses that match your search.
+<% else %>
+  Here are your results:
+  <ul>
+    <% @results.each do |business| %>
+      <li><%= render partial: "business_info", locals: {business: business} %> </li>
+    <% end %>
+  </ul>
+<% end %>
