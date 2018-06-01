@@ -2,9 +2,6 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
   resources :businesses do
-    collection do
-      get 'search'
-    end
     resources :products
   end
   resources :tags
