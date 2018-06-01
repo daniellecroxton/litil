@@ -29,6 +29,11 @@ class Business < ApplicationRecord
 
   def self.search(search)
     if search != ""
+      # where(".name LIKE ?", "%#{search}%")
+      #
+      # self.where(name: "%#{search}%").or(self.products.where(name: "%#{search}%"))
+      #
+
       self.joins(products: :tags)
       .where("products.name LIKE :s OR tags.name LIKE :s OR businesses.name LIKE :s", s: "%#{search}%")
     else
