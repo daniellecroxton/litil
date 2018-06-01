@@ -5,6 +5,14 @@
     <%= f.label :name %>
     <%= f.text_field :name, required: true %><br>
 
+    <%= f.fields_for :businesses_products do |b| %>
+      <%= b.label :product_rating %>
+      <% 1.upto(5) do |i| %>
+        <%= b.radio_button :product_rating, i %>
+        <%= b.label :product_rating, i, :value => i %>
+      <% end %>
+    <% end %><br />
+
     <!-- add image? -->
 
     Add Tags:<br />

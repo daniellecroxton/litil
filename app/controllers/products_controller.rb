@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
   def show
     @product = current_product
     @business = Business.find_by_id(params[:business_id])
+    @business_product = BusinessesProduct.find_by_product_id_and_business_id(params[:product_id],params[:business_id])
   end
 
   def index
