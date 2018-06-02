@@ -18,10 +18,11 @@ class ProductsController < ApplicationController
     # raise current_user.inspect
     @business = Business.find_by_id(params[:business_id])
     @product = @business.products.new(product_params)
-
+    # raise params.inspect
     respond_to do |format|
       # binding.pry
       if @product.valid?
+        # @product.businesses_products.build
         @product.create_tag_from_name if product_params[:new_tag_name]
         @business.products << @product
         # @business_product = BusinessesProduct.find_by_product_id_and_business_id(params[:product_id],params[:business_id])
