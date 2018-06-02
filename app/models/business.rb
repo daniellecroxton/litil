@@ -23,10 +23,6 @@ class Business < ApplicationRecord
     self.category = new_category
   end
 
-  def self.by_category(category_id)
-    self.where(category_id: category_id)
-  end
-
   def self.search(search)
     if search != ""
       # where(".name LIKE ?", "%#{search}%")
