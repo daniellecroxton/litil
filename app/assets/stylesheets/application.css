@@ -4,3 +4,115 @@
   font-family: 'Open Sans', sans-serif;
   src: url(https://fonts.googleapis.com/css?family=Open+Sans);
 }
+
+/*////////// GLOBAL //////////*/
+
+head {
+  background-color: black;
+  color: white;
+  width: 100%;
+  height: 2;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  margin: 0;
+  line-height: 1;
+  background-image: url('./images/background.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.flash_message {
+  color: #2dd8a2;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 2rem;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: .75rem;
+}
+
+p {
+  font-size: 1rem;
+}
+
+button {
+  height: 60px;
+  width: 300px;
+  text-align: center;
+  border: 0;
+  font-size: .9rem;
+}
+
+input[type="text"] {
+  height: 60px;
+  width: 300px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+input::-webkit-input-placeholder {
+  font-family: 'Open Sans', sans-serif;
+}
+
+input:-moz-placeholder {
+  font-family: 'Open Sans', sans-serif;
+}
+
+input::-moz-placeholder {
+  font-family: 'Open Sans', sans-serif;
+}
+
+input:-ms-input-placeholder {
+  font-family: 'Open Sans', sans-serif;
+}
+
+input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+input:focus:-moz-placeholder {
+  color: transparent;
+}
+
+input:focus::-moz-placeholder {
+  color: transparent;
+}
+
+input:focus:-ms-input-placeholder {
+  color: transparent;
+}
+
+/*////////// CONTENT //////////*/
+
+.content-container {
+  background-color: white;
+  box-shadow: 4px 4px 4px 4px rgba(50, 50, 50, 0.75);
+  height: 75%;
+  margin: 0 auto;
+  width: 600px;
+  padding: 10px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a {
+  color: #696969;
+  line-height: 2;
+  text-decoration: none;
+}

@@ -19,9 +19,11 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield :form_errors %>
-    <%= yield %>
+      <div class="content-container">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <%= yield :form_errors %>
+        <%= yield %>
+      </div>
   </body>
 </html>
