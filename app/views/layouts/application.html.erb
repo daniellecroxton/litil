@@ -6,24 +6,27 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= link_to("Home", root_path) %>
-    <% if current_user %>
-      <%= link_to("Profile", user_path(current_user.id)) %>
-      <%= link_to("Logout", destroy_user_session_path, method: :delete) %>
-    <% else %>
-      <%= link_to("Login", new_user_session_path) %>
-      <%= link_to("Sign up", new_user_registration_path) %>
-    <% end %>
-
 
   </head>
 
-  <body>
+  <body background="../assets/background.jpg">
       <div class="content-container">
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
-        <%= yield :form_errors %>
-        <%= yield %>
+
+        <%= link_to("Litil", root_path) %>
+        <div class="header-right">
+          <% if current_user %>
+            <%= link_to("Profile", user_path(current_user.id)) %>
+            <%= link_to("Logout", destroy_user_session_path, method: :delete) %>
+          <% else %>
+            <%= link_to("Login", new_user_session_path) %>
+            <%= link_to("Sign up", new_user_registration_path) %>
+          <% end %>
+        </div>
+
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+            <%= yield :form_errors %>
+            <%= yield %>
       </div>
   </body>
 </html>

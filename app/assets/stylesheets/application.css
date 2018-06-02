@@ -7,11 +7,8 @@
 
 /*////////// GLOBAL //////////*/
 
-head {
-  background-color: black;
-  color: white;
-  width: 100%;
-  height: 2;
+html {
+  height: 100%;
 }
 
 body {
@@ -19,7 +16,7 @@ body {
   font-size: 15px;
   margin: 0;
   line-height: 1;
-  background-image: url('./images/background.jpg') no-repeat center center fixed;
+  background-attachment: fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -59,7 +56,7 @@ button {
 }
 
 input[type="text"] {
-  height: 60px;
+  height: 20px;
   width: 300px;
   font-family: 'Open Sans', sans-serif;
 }
@@ -101,7 +98,7 @@ input:focus:-ms-input-placeholder {
 .content-container {
   background-color: white;
   box-shadow: 4px 4px 4px 4px rgba(50, 50, 50, 0.75);
-  height: 75%;
+  min-height: 97%;
   margin: 0 auto;
   width: 600px;
   padding: 10px;
@@ -115,4 +112,9 @@ a {
   color: #696969;
   line-height: 2;
   text-decoration: none;
+}
+
+.header-right {
+  float: right;
+  word-spacing: 10px;
 }
