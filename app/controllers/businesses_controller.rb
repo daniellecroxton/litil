@@ -4,7 +4,8 @@ class BusinessesController < ApplicationController
   end
 
   def index
-    @results = Business.search(params[:search])
+    @results = Business.search(params[:search]).uniq
+    # @results = ^.uniq find by id business
     # @businesses = Business.all
     # @products = Product.all
     # @tags = Tag.all

@@ -35,7 +35,8 @@ class Business < ApplicationRecord
       #
 
       self.joins(products: :tags)
-      .where("products.name LIKE :s OR tags.name LIKE :s OR businesses.name LIKE :s", s: "%#{search}%")
+      .select('*')
+      .where("products.name LIKE :s OR tags.name LIKE :s OR businesses.name LIKE :s", s: "%#{search}%").all
     else
       self.all
     end
