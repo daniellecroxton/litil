@@ -6,21 +6,18 @@ class Product < ApplicationRecord
   has_many :businesses, through: :businesses_products
   mount_uploader :image, ImageUploader
   validates :name, presence: true
-  accepts_nested_attributes_for :businesses_products
+  # accepts_nested_attributes_for :businesses_products
 
   def create_tag_from_name
     # create_tag(:name => new_tag_name)
     new_tag = Tag.find_or_create_by(name: new_tag_name)
     self.tags << new_tag
   end
-  #
-  # def businesses_products_attributes=(businesses_products_attributes)
-  #   binding.pry
-  #   businesses_products_attributes.values.each do |attribute|
-  #     if attribute["product_rating"] != ''
-  #       self.businesses_products_attributes.build(product_rating: attribute)
-  #     end
-  #   end
-  # end
+
+  def businesses_products_attributes=(businesses_products_attributes)
+    businesses_products_attributes.each do |i, attribute|
+        self.businesses_products.build(attribute)
+    end
+  end
 
 end
