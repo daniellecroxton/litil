@@ -15,7 +15,7 @@ class Product < ApplicationRecord
   end
 
   def businesses_products_attributes=(businesses_products_attributes)
-    businesses_products_attributes.each do |i, attribute|
+    businesses_products_attributes.values.each do |attribute|
         self.businesses_products.build(attribute)
     end
   end

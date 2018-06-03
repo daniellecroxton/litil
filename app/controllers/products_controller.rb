@@ -20,6 +20,7 @@ class ProductsController < ApplicationController
     respond_to do |format|
       if @product.valid?
         @product.create_tag_from_name if product_params[:new_tag_name]
+        @product.tags.build(params[:tag_ids])
         @business.products << @product
         @product.save
         format.html { redirect_to business_path(@business), notice: "New product added." }
