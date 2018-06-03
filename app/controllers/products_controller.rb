@@ -17,10 +17,11 @@ class ProductsController < ApplicationController
   def create
     @business = Business.find_by_id(params[:business_id])
     @product = @business.products.new(product_params)
+    # raise params.inspect
     respond_to do |format|
       if @product.valid?
-        @product.create_tag_from_name if product_params[:new_tag_name]
-        @product.tags.build(params[:tag_ids])
+        @product.create_tag_from_name unless product_params[:new_tag_name].blank?
+        @product.tags.build(product_params[:tag_ids])
         @business.products << @product
         @product.save
         format.html { redirect_to business_path(@business), notice: "New product added." }
@@ -39,7 +40,6 @@ class ProductsController < ApplicationController
   def update
     @product = current_product
     @business = Business.find_by_id(params[:business_id])
-    # raise params[:product][:new_tag_name].inspect
     respond_to do |format|
       if @product.valid?
         @tag = Tag.find_or_create_by(name: params[:product][:new_tag_name])
@@ -70,7 +70,7 @@ class ProductsController < ApplicationController
       :name,
       :new_tag_name,
       :tag_ids => [],
-      :businesses_products_attributes => [:id, :product_rating]
+      :businesses_products_attributes => [:product_rating]
     )
   end
 

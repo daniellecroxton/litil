@@ -5,12 +5,6 @@ class BusinessesController < ApplicationController
 
   def index
     @results = Business.search(params[:search]).uniq
-    # @results = ^.uniq find by id business
-    # @businesses = Business.all
-    # @products = Product.all
-    # @tags = Tag.all
-    # @categories = Category.all
-    # @users = User.all
   end
 
   def new
@@ -26,20 +20,14 @@ class BusinessesController < ApplicationController
   end
 
   def create
-    # raise current_user.inspect
     @business = current_user.businesses.new(business_params)
     @business.create_category_from_name unless business_params[:new_category_name].blank?
-    # raise business_params.inspect
     respond_to do |format|
-      # binding.pry
-
       if @business.valid?
         @business.save
         format.html { redirect_to business_path(@business), notice: "New business added." }
       else
         format.html { render :new }
-
-        #add error message
       end
     end
   end
