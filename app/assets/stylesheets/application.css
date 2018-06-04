@@ -8,6 +8,12 @@
 /*////////// GLOBAL //////////*/
 
 html {
+  background: url("../assets/background.jpg");
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   height: 100%;
 }
 
@@ -16,11 +22,6 @@ body {
   font-size: 15px;
   margin: 0;
   line-height: 1;
-  background-attachment: fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
   margin: 0 auto;
   height: 100%;
 }
