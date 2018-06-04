@@ -7,7 +7,6 @@ Business Index Page - Search Results
 <% else %>
   Here are your results:
   <ul>
-    <%= @results %>
 
     <% @results.each do |business| %>
       <li><%= render partial: "business_info", locals: {business: business} %> </li>

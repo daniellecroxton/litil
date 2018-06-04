@@ -8,17 +8,7 @@ class Business < ApplicationRecord
   mount_uploader :image, ImageUploader
   scope :recent, -> { order("businesses.created_at DESC").limit(3) }
 
-  # accepts_nested_attributes_for :category
-  #
-  # def category_attributes=(category_attributes)
-  #   category_attributes.values.each do |category_attribute|
-  #     category = Category.find_or_create_by(category_attribute)
-  #     self.category_id = category
-  #   end
-  # end
-
   def create_category_from_name
-    # create_category(:name => new_category_name) unless Category.find_by(name: new_category_name)
     new_category = Category.find_or_create_by(name: new_category_name)
     self.category = new_category
   end
