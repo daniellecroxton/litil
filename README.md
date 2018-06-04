@@ -1,19 +1,20 @@
 # Welcome to Litil
 
-Litil is a small business directory built on Rails. It allows you to search for small businesses by their name, products, or tags. You can also signup for an account to be able to add, edit, and delete your own businesses, products, and tags.
+Litil is a small business directory built on Rails. It allows you to search for small businesses by their name or view businesses by category. You can also signup for an account to be able to add, edit, and delete your own businesses, products, and tags.
 
 ## To Install
 
 Dependency: You will need to install rails before using this app.
 
-Click 'Clone or Download'
-Copy the link
-In Command Line or Git Bash, type 'git clone ' then paste the URL
-Run 'bundle install'
-Run 'rake db:migrate'
-Run 'rails s'
-Open http://localhost:3000/ (or URL provided after running rails s) in a browser
+1. Click 'Clone or Download'
+2. Copy the link
+3. In Command Line or Git Bash, type `git clone` then paste the URL and press enter
+4. Run `bundle install`
+5. Run `rake db:migrate`
+6. Run `rails s`
+7. Open http://localhost:3000/ (or URL provided after running rails s) in a web browser
 
+Some seed data is also available by running `rake db:seed` after step 5.
 
 ## To Contribute
 
