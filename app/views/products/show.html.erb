@@ -6,7 +6,9 @@
 
 <%= product_tag_links(@product) %>
 
-<%= render partial: "products_add_tag", locals: {product: @product, business: @business} %>
+<% if current_user && @business.user_id == current_user.id %>
+  <%= render partial: "products_add_tag", locals: {product: @product, business: @business} %>
 
-<%= link_to "Delete product", business_product_path, :confirm => "Are you sure?", :method => :delete %><br />
-<%= link_to "Edit product", edit_business_product_path(@business, @product) %>
+  <%= link_to "Delete product", business_product_path, :confirm => "Are you sure?", :method => :delete %><br />
+  <%= link_to "Edit product", edit_business_product_path(@business, @product) %>
+<% end %>

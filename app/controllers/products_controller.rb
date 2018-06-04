@@ -1,8 +1,10 @@
 class ProductsController < ApplicationController
+  before_action :require_creator, only: [:edit, :destroy]
+
 
   def show
     @product = current_product
-    @business = Business.find_by_id(params[:business_id])
+    @business = current_business
     @business_product = BusinessesProduct.find_by_product_id_and_business_id(@product.id, @business.id)
   end
 
@@ -10,13 +12,13 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @business = Business.find_by_id(params[:business_id])
+    @business = current_business
     @product = @business.products.new
     @businesses_products = @product.businesses_products.build
   end
 
   def create
-    @business = Business.find_by_id(params[:business_id])
+    @business = current_business
     @product = @business.products.build(product_params)
     @product.businesses_products.last.business_id = @business.id
     respond_to do |format|
@@ -33,12 +35,12 @@ class ProductsController < ApplicationController
 
   def edit
     @product = current_product
-    @business = Business.find_by_id(params[:business_id])
+    @business = current_business
   end
 
   def update
     @product = current_product
-    @business = Business.find_by_id(params[:business_id])
+    @business = current_business
     respond_to do |format|
       if @product.valid?
         @tag = Tag.find_or_create_by(name: params[:product][:new_tag_name])
@@ -53,7 +55,7 @@ class ProductsController < ApplicationController
 
   def destroy
     @product = current_product
-    @business = Business.find_by_id(params[:business_id])
+    @business = current_business
     @product.destroy!
     render '/businesses/show', :notice => "Your product has been deleted"
   end
@@ -62,6 +64,17 @@ class ProductsController < ApplicationController
 
   def current_product
     Product.find_by_id(params[:id])
+  end
+
+  def current_business
+    Business.find_by_id(params[:business_id])
+  end
+
+  def require_creator
+    unless current_user.id == current_business.user_id
+      flash[:error] = "You cannot make changes to a business you did not create"
+      redirect_to user_path
+    end
   end
 
   def product_params
