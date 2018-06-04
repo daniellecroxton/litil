@@ -3,7 +3,8 @@ class ProductsController < ApplicationController
   def show
     @product = current_product
     @business = Business.find_by_id(params[:business_id])
-    @business_product = BusinessesProduct.find_by_product_id_and_business_id(@product.id,@business.id)
+    @business_product = BusinessesProduct.find_by_product_id_and_business_id(@product.id, @business.id)
+    # binding.pry
   end
 
   def index
@@ -17,15 +18,16 @@ class ProductsController < ApplicationController
 
   def create
     @business = Business.find_by_id(params[:business_id])
-    @product = @business.products.create(product_params)
-    # binding.pry
+    @product = @business.products.build(product_params)
+    @product.businesses_products.last.business_id = @business.id
+
     # raise product_params.inspect
     respond_to do |format|
-      if @product.save
+      if @product
         @product.create_tag_from_name unless product_params[:new_tag_name].blank?
         # @product.tags.build(product_params[:tag_ids])
-        @business.products << @product
-        @product.businesses_products.create(params[businesses_products_attributes])
+        # @business.products << @product
+        # @product.businesses_products.create(params[businesses_products_attributes])
         @product.save
         # binding.pry
         # @product.businesses_products = params[:businesses_products]

@@ -16,8 +16,11 @@ class Product < ApplicationRecord
 
   def businesses_products_attributes=(businesses_products_attributes)
     businesses_products_attributes.values.each do |attribute|
+        self.save
         self.businesses_products.build(attribute)
     end
   end
+
+  #product.rating model
 
 end
