@@ -2,7 +2,7 @@
 
 Litil is a small business directory built on Rails. It allows you to search for small businesses by their name, products, or tags. You can also signup for an account to be able to add, edit, and delete your own businesses, products, and tags.
 
-## To install
+## To Install
 
 Dependency: You will need to install rails before using this app.
 
