@@ -1,10 +1,12 @@
 class BusinessesController < ApplicationController
+  before_action :require_login, only: [:edit, :destroy]
+
 
   def search
   end
 
   def index
-    @results = Business.search(params[:search]).uniq
+    @results = Business.search(params[:search])
   end
 
   def new
@@ -54,6 +56,13 @@ class BusinessesController < ApplicationController
 
   def current_business
     Business.find_by_id(params[:id])
+  end
+
+  def require_login
+    unless current_user.id == current_business.user_id
+      flash[:error] = "You cannot make changes to a business you did not create"
+      redirect_to user_path
+    end
   end
 
   def business_params
