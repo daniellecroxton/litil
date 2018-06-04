@@ -25,6 +25,7 @@ class ProductsController < ApplicationController
         @product.create_tag_from_name unless product_params[:new_tag_name].blank?
         # @product.tags.build(product_params[:tag_ids])
         @business.products << @product
+        @product.businesses_products.create(params[businesses_products_attributes])
         @product.save
         # binding.pry
         # @product.businesses_products = params[:businesses_products]
