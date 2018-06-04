@@ -20,17 +20,10 @@ class ProductsController < ApplicationController
     @business = Business.find_by_id(params[:business_id])
     @product = @business.products.build(product_params)
     @product.businesses_products.last.business_id = @business.id
-
-    # raise product_params.inspect
     respond_to do |format|
       if @product
         @product.create_tag_from_name unless product_params[:new_tag_name].blank?
-        # @product.tags.build(product_params[:tag_ids])
-        # @business.products << @product
-        # @product.businesses_products.create(params[businesses_products_attributes])
         @product.save
-        # binding.pry
-        # @product.businesses_products = params[:businesses_products]
         format.html { redirect_to business_path(@business), notice: "New product added." }
       else
         @product.errors.messages
