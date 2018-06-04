@@ -4,7 +4,6 @@ class ProductsController < ApplicationController
     @product = current_product
     @business = Business.find_by_id(params[:business_id])
     @business_product = BusinessesProduct.find_by_product_id_and_business_id(@product.id, @business.id)
-    # binding.pry
   end
 
   def index
@@ -69,6 +68,7 @@ class ProductsController < ApplicationController
     params.require(:product).permit(
       :name,
       :new_tag_name,
+      :business_id,
       :tag_ids => [],
       :businesses_products_attributes => [:product_rating]
     )

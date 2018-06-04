@@ -6,6 +6,7 @@
     <%= f.text_field :name, required: true %><br>
 
     <%= f.fields_for :businesses_products, @businesses_products do |b| %>
+      <!-- <%= b.hidden_field :business_id, value: business.id %> -->
         Product Rating
       <% 1.upto(5) do |i| %>
         <%= b.radio_button :product_rating, i %>

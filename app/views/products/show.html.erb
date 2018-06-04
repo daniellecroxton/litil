@@ -8,4 +8,5 @@
 
 <%= render partial: "products_add_tag", locals: {product: @product, business: @business} %>
 
-<%= link_to "Delete product", business_product_path, :confirm => "Are you sure?", :method => :delete %>
+<%= link_to "Delete product", business_product_path, :confirm => "Are you sure?", :method => :delete %><br />
+<%= link_to "Edit product", edit_business_product_path(@business, @product) %>

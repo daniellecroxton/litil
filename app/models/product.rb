@@ -6,7 +6,6 @@ class Product < ApplicationRecord
   has_many :businesses, through: :businesses_products
   mount_uploader :image, ImageUploader
   validates :name, presence: true
-  # accepts_nested_attributes_for :businesses_products
 
   def create_tag_from_name
     new_tag = Tag.find_or_create_by(name: new_tag_name)

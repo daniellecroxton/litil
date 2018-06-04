@@ -34,7 +34,6 @@ class BusinessesController < ApplicationController
 
   def update
     @business = current_business
-
     respond_to do |format|
       if @business.update(business_params)
         format.html { redirect_to @business, notice: 'Business was successfully updated.' }
