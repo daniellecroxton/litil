@@ -11,5 +11,5 @@ View businesses by <%= link_to "category", categories_path %>
 
 <h2>Recently added businesses</h2>
   <ul><% Business.recent.each do |biz| %>
-    <li><%= link_to biz.name, biz %> - <%= biz.rating %></li>
+    <li><%= link_to biz.name, biz %> - <%= biz.business_rating.rating %></li>
   <% end %></ul>

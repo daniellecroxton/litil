@@ -23,6 +23,7 @@ class BusinessesController < ApplicationController
 
   def create
     @business = current_user.businesses.new(business_params)
+    @business_rating = @business.build_business_rating
     @business.create_category_from_name unless business_params[:new_category_name].blank?
     respond_to do |format|
       if @business.valid?
@@ -36,6 +37,7 @@ class BusinessesController < ApplicationController
 
   def update
     @business = current_business
+    @business_rating = BusinessRating.find_by_id(@business.business_rating_id)
     respond_to do |format|
       if @business.update(business_params)
         format.html { redirect_to @business, notice: 'Business was successfully updated.' }
@@ -71,7 +73,7 @@ class BusinessesController < ApplicationController
       :full_street_address,
       :website,
       :phone,
-      :rating,
+      :business_rating_id,
       :image,
       :user_id,
       :category_id,
