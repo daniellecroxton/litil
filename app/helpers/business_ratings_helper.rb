@@ -1,0 +1,2 @@
+module BusinessRatingsHelper
+end

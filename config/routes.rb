@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :business_ratings
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks' }
   resources :businesses do
     resources :products

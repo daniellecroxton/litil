@@ -4,8 +4,9 @@ class Business < ApplicationRecord
   attr_accessor :new_category_name
   has_many :businesses_products
   has_many :products, through: :businesses_products
+  belongs_to :business_rating
   validates :name, presence: true
-  mount_uploader :image, ImageUploader
+  # mount_uploader :image, ImageUploader
   scope :recent, -> { order("businesses.created_at DESC").limit(3) }
 
   def create_category_from_name
