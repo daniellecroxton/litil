@@ -11,6 +11,8 @@ class BusinessesController < ApplicationController
 
   def new
     @business = Business.new
+    @business_rating = @business.business_rating.build
+
   end
 
   def edit

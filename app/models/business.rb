@@ -8,6 +8,7 @@ class Business < ApplicationRecord
   validates :name, presence: true
   # mount_uploader :image, ImageUploader
   scope :recent, -> { order("businesses.created_at DESC").limit(3) }
+  accepts_nested_attributes_for :business_rating
 
   def create_category_from_name
     new_category = Category.find_or_create_by(name: new_category_name)
