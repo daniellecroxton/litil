@@ -4,7 +4,7 @@ class Business < ApplicationRecord
   attr_accessor :new_category_name
   has_many :businesses_products
   has_many :products, through: :businesses_products
-  belongs_to :business_rating
+  belongs_to :business_rating, required: false
   validates :name, presence: true
   # mount_uploader :image, ImageUploader
   scope :recent, -> { order("businesses.created_at DESC").limit(3) }
