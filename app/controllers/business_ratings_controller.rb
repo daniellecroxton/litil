@@ -2,7 +2,7 @@ class BusinessRatingsController < ApplicationController
 
   def create
     @business = Business.find(params[:business_id])
-    @business_rating = @business.business_rating.build(business_rating_params)
+    @business_rating = @business.business_rating.create(business_rating_params)
 
   end
 

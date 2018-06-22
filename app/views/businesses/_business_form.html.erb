@@ -14,10 +14,6 @@
   <%= f.label :full_street_address %>
   <%= f.text_field :full_street_address %><br>
 
-  <!-- <% Category.all.each do |category| %>
-    <%= f.radio_button :category_id, category.id %>
-    <%= f.label :category_id, category.name %>
-  <% end %> -->
 
   Select a category:<br />
     <%= f.collection_radio_buttons :category_id, Category.all, :id, :name %><br />
@@ -25,8 +21,7 @@
     <%= f.text_field :new_category_name %>
     <br />
 
-    <%= f.fields_for :business_rating, @business_rating do |b| %>
-      <!-- <%= b.hidden_field :business_id, value: business.id %> -->
+    <%= f.fields_for :business_rating, business.business_rating do |b| %>
         Business Rating
       <% 1.upto(5) do |i| %>
         <%= b.radio_button :rating, i, required: true %>

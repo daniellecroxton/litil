@@ -11,8 +11,7 @@ class BusinessesController < ApplicationController
 
   def new
     @business = Business.new
-    @business_rating = @business.business_rating.build
-
+    @business.build_business_rating
   end
 
   def edit
@@ -26,6 +25,8 @@ class BusinessesController < ApplicationController
   def create
     @business = current_user.businesses.new(business_params)
     @business_rating = @business.business_rating
+    # binding.pry
+
     @business.create_category_from_name unless business_params[:new_category_name].blank?
     respond_to do |format|
       if @business.valid?
@@ -79,7 +80,7 @@ class BusinessesController < ApplicationController
       :user_id,
       :category_id,
       :new_category_name,
-      :business_rating => [:rating]
+      :business_rating_attributes => [:rating]
     )
   end
 end
