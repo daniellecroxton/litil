@@ -23,10 +23,10 @@ class BusinessesController < ApplicationController
   end
 
   def create
+
+    # binding.pry
     @business = current_user.businesses.new(business_params)
     @business_rating = @business.business_rating
-    # binding.pry
-
     @business.create_category_from_name unless business_params[:new_category_name].blank?
     respond_to do |format|
       if @business.valid?
